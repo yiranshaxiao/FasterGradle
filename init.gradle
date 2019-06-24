@@ -1,0 +1,46 @@
+gradle.projectsLoaded {
+    rootProject.allprojects {
+        buildscript {
+            // https://help.aliyun.com/document_detail/102512.html
+            repositories {
+                all { ArtifactRepository repo ->
+                    if (repo instanceof MavenArtifactRepository) {
+                        def host = repo.getUrl().getHost()
+                        if (_canRemove(host)) {
+                            remove repo
+                        }
+                    }
+                }
+                maven {
+                    url 'https://maven.aliyun.com/repository/public'
+                }
+                 maven {
+                    url 'https://maven.aliyun.com/repository/google'
+                }
+            }
+        }
+        repositories {
+            all { ArtifactRepository repo ->
+                    if (repo instanceof MavenArtifactRepository) {
+                        def host = repo.getUrl().getHost()
+                        if (_canRemove(host)) {
+                            remove repo
+                        }
+                    }
+                }
+                maven {
+                    url 'https://maven.aliyun.com/repository/public'
+                }
+                 maven {
+                    url 'https://maven.aliyun.com/repository/google'
+                }
+        }
+    }
+}
+
+boolean _canRemove(host) {
+    if (host == null) {
+        return false
+    }
+    return host.equalsIgnoreCase('jcenter.bintray.com') || host.equalsIgnoreCase('repo1.maven.org') || host.equalsIgnoreCase('repo.maven.apache.org') || host.equalsIgnoreCase('maven.google.com') || host.equalsIgnoreCase('dl.google.com')
+}
