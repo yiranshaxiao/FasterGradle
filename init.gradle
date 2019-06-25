@@ -42,5 +42,11 @@ boolean _canRemove(host) {
     if (host == null) {
         return false
     }
-    return host.equalsIgnoreCase('jcenter.bintray.com') || host.equalsIgnoreCase('repo1.maven.org') || host.equalsIgnoreCase('repo.maven.apache.org') || host.equalsIgnoreCase('maven.google.com') || host.equalsIgnoreCase('dl.google.com')
+    def hosts = ['jcenter.bintray.com', 'repo1.maven.org', 'repo.maven.apache.org', 'maven.google.com', 'dl.google.com']
+    hosts.each { item ->
+        if (item.equalsIgnoreCase(host)) {
+            return true
+        }
+    }
+    return false
 }
