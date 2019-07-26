@@ -14,7 +14,7 @@ gradle.projectsLoaded {
                 maven {
                     url 'https://maven.aliyun.com/repository/public'
                 }
-                 maven {
+                maven {
                     url 'https://maven.aliyun.com/repository/google'
                 }
             }
@@ -31,7 +31,7 @@ gradle.projectsLoaded {
                 maven {
                     url 'https://maven.aliyun.com/repository/public'
                 }
-                 maven {
+                maven {
                     url 'https://maven.aliyun.com/repository/google'
                 }
         }
